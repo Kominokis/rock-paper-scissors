@@ -8,6 +8,7 @@
 let userScore = 0;
 let computerScore = 0;
 let roundCount = 1;
+let playerSelection;
 
 
 
@@ -28,19 +29,20 @@ function checkInput(){
 
 
 
-function playerChoice(playerSelection){
-    if(playerSelection.id == 'rock'){
-        playerSelection = 'rock';
-    } else if(playerSelection.id == 'paper'){
-        playerSelection = 'paper';
-    } else if(playerSelection.id == 'scissors'){
-        playerSelection = 'scissors';
+function playerChoice(playerSelectionLocal){
+    if(playerSelectionLocal.id == 'rock'){
+        playerSelectionLocal = 'rock';
+    } else if(playerSelectionLocal.id == 'paper'){
+        playerSelectionLocal = 'paper';
+    } else if(playerSelectionLocal.id == 'scissors'){
+        playerSelectionLocal = 'scissors';
     }
     // console.log(playerSelection);
-    game();
+    
 
-    return playerSelection;
+    return playerSelection = playerSelectionLocal, game()
 }
+
 
 
 function getComputerChoice(){
@@ -95,6 +97,7 @@ function game(){
     let i = 1;
 
     console.log('gra rozpoczeta');
+    console.log(playerSelection);
     
 
         // while(i <= numberOfRound){
