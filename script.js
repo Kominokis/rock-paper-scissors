@@ -45,7 +45,7 @@ function playerChoice(playerSelectionLocal){
     // console.log(playerSelection);
     
 
-    return playerSelection = playerSelectionLocal
+    return playerSelection = playerSelectionLocal, game()
 }
 
 
