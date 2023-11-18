@@ -4,9 +4,11 @@
 // 4. Sprawdzamy kto wygrał -- zrobione
 // 5. rozegraj jedna runde -- zrobione
 
+
 let userScore = 0;
 let computerScore = 0;
 let roundCount = 1;
+
 
 
 function checkInput(){
@@ -20,11 +22,25 @@ function checkInput(){
         console.log('Input area is empty or is NaN');
     }
 
-    console.log(numberOfRound);
-    return numberOfRound
+    console.log(numberOfRound);  
+    return numberOfRound;
 }
 
 
+
+function playerChoice(playerSelection){
+    if(playerSelection.id == 'rock'){
+        playerSelection = 'rock';
+    } else if(playerSelection.id == 'paper'){
+        playerSelection = 'paper';
+    } else if(playerSelection.id == 'scissors'){
+        playerSelection = 'scissors';
+    }
+    // console.log(playerSelection);
+    game();
+
+    return playerSelection;
+}
 
 
 function getComputerChoice(){
@@ -41,29 +57,29 @@ function getComputerChoice(){
     }
 
 
-    return computerChoice
+    return computerChoice;
 }
 
 
 // console.log(getComputerChoice());
 
-function playRound(){
-    let userChoice = prompt('Your turn (rock, paper, scissors): ').toLowerCase();
-    let computerChoice = getComputerChoice().toLowerCase();
+function playRound(playerChoice, computerChoice){
+    playerChoice = playerChoice();
+    computerChoice = getComputerChoice().toLowerCase();
     // console.log(userChoice);
     // console.log(computerChoice);
     let win = `Round: ${roundCount} - YOU WON`;
     let loose = `Round: ${roundCount} - YOU LOST`;
     
-    if(userChoice == computerChoice){
+    if(playerChoice == computerChoice){
         console.log(`Round: ${roundCount} - DRAW, no points`);
-    }else if((userChoice == 'rock') && (computerChoice == 'scissors')){
+    }else if((playerChoice == 'rock') && (computerChoice == 'scissors')){
         console.log(win);
         userScore++;
-    }else if((userChoice == 'paper') && (computerChoice == 'rock')){
+    }else if((playerChoice == 'paper') && (computerChoice == 'rock')){
         console.log(win);
         userScore++;
-    }else if((userChoice == 'scissors') && (computerChoice == 'paper')){
+    }else if((playerChoice == 'scissors') && (computerChoice == 'paper')){
         console.log(win);
         userScore++
     }else{
@@ -71,24 +87,28 @@ function playRound(){
         computerScore++;
     }
     roundCount++;
-    return userScore, computerScore
+    return userScore, computerScore;
 }
 
 
 function game(){
     let i = 1;
-    while(i <= maxRound){
-        playRound();
-        i++;
-    }
 
-    if(userScore === computerScore){
-        console.log(`Game result: TIE !!!`)
-    }else if(userScore < computerScore){
-        console.log('Game result: COMPUTER WINS !!!')
-    }else{
-        console.log('Game result: USER WINS !!!')
-    }
+    console.log('gra rozpoczeta');
+    
+
+        // while(i <= numberOfRound){
+        //     playRound();
+        //     i++;
+        // }
+
+        // if(userScore === computerScore){
+        //     console.log(`Game result: TIE !!!`)
+        // }else if(userScore < computerScore){
+        //     console.log('Game result: COMPUTER WINS !!!')
+        // }else{
+        //     console.log('Game result: USER WINS !!!')
+        // }
 }
 
 
