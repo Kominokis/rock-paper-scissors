@@ -1,0 +1,84 @@
+*{
+    font-family: Roboto, Arial;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Header and H1 */
+h1{
+    font-size: 300%;
+    font-weight: bolder;
+}
+
+.header{
+    flex: 1;
+    letter-spacing: 5px;
+    word-spacing: 20px;
+    text-align: center;
+}
+
+
+/* Game block */
+.game{
+    margin-top: 25px;
+    text-align: center;
+    color: #262626;
+
+}
+
+.game h1{
+    color: #262626;
+}
+
+#numberOfRounds{
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+#confirmBtn{
+    border: 2px solid black;
+    border-radius: 5px;
+
+    margin-top: 20px;
+    padding: 10px 20px 10px 20px;
+    
+    font-size: 15px;
+    background-color: antiquewhite;
+}
+
+#confirmBtn:active{
+    background-color: rgb(202, 171, 131);
+}
+
+/* Button attribute */
+button{
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+button:hover{
+    background-color: rgb(202, 171, 131);
+}
+
+
+/* Controls panel */
+.controls #paper, .controls #scissors{
+    margin-left: 100px;
+}
+
+.controls{
+    margin-top: 75px;
+}
+

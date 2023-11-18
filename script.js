@@ -7,7 +7,25 @@
 let userScore = 0;
 let computerScore = 0;
 let roundCount = 1;
-let maxRound = parseInt(prompt('How many rounds u want to play?'));
+
+
+function checkInput(){
+    let numberOfRound = document.getElementById('numberOfRounds').value;
+    let linkToGame = document.getElementById('linkToGame');
+    // console.log(numberOfRound);
+    if(isNaN(numberOfRound) == false){
+        numberOfRound = parseInt(numberOfRound);
+        location.assign('./rounds.html');
+    }else{
+        console.log('Input area is empty or is NaN');
+    }
+
+    console.log(numberOfRound);
+    return numberOfRound
+}
+
+
+
 
 function getComputerChoice(){
     let number = Math.floor(Math.random() * (3 - 1 + 1) + 1);
@@ -73,8 +91,10 @@ function game(){
     }
 }
 
-game();
-console.log('-----Here are your points-----');
-console.log(`Twój wynik: ${userScore}`);
-console.log(`Wynik komputera: ${computerScore}`);
-console.log('------------------------------');
+
+
+// game();
+// console.log('-----Here are your points-----');
+// console.log(`Twój wynik: ${userScore}`);
+// console.log(`Wynik komputera: ${computerScore}`);
+// console.log('------------------------------');
