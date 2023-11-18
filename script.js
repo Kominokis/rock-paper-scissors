@@ -8,23 +8,28 @@
 let userScore = 0;
 let computerScore = 0;
 let roundCount = 1;
-let playerSelection;
 
+let playerSelection;
+let computerSelection;
+
+let numberOfRounds = 0;
 
 
 function checkInput(){
     let numberOfRound = document.getElementById('numberOfRounds').value;
-    let linkToGame = document.getElementById('linkToGame');
     // console.log(numberOfRound);
-    if(isNaN(numberOfRound) == false){
+
+    if((isNaN(numberOfRound) != true) && (numberOfRound != '')){
         numberOfRound = parseInt(numberOfRound);
+        // -----Pozwala przeniesc zmienna na inna strone----
+        sessionStorage.setItem("numberOfRound", numberOfRound);
+        // -------------------------------------------------
         location.assign('./rounds.html');
     }else{
         console.log('Input area is empty or is NaN');
     }
 
-    console.log(numberOfRound);  
-    return numberOfRound;
+    // console.log(numberOfRound); 
 }
 
 
@@ -40,9 +45,8 @@ function playerChoice(playerSelectionLocal){
     // console.log(playerSelection);
     
 
-    return playerSelection = playerSelectionLocal, game()
+    return playerSelection = playerSelectionLocal
 }
-
 
 
 function getComputerChoice(){
@@ -59,29 +63,30 @@ function getComputerChoice(){
     }
 
 
-    return computerChoice;
+    return computerSelection = computerChoice;
 }
 
 
 // console.log(getComputerChoice());
 
-function playRound(playerChoice, computerChoice){
-    playerChoice = playerChoice();
-    computerChoice = getComputerChoice().toLowerCase();
+function playRound(player, computer){
+    // playerChoice = playerChoice();
+    // computerChoice = getComputerChoice().toLowerCase();
     // console.log(userChoice);
     // console.log(computerChoice);
+    // playerChoice(playerSelection);
     let win = `Round: ${roundCount} - YOU WON`;
     let loose = `Round: ${roundCount} - YOU LOST`;
     
-    if(playerChoice == computerChoice){
+    if(player == computer){
         console.log(`Round: ${roundCount} - DRAW, no points`);
-    }else if((playerChoice == 'rock') && (computerChoice == 'scissors')){
+    }else if((player == 'rock') && (computer == 'scissors')){
         console.log(win);
         userScore++;
-    }else if((playerChoice == 'paper') && (computerChoice == 'rock')){
+    }else if((player == 'paper') && (computer == 'rock')){
         console.log(win);
         userScore++;
-    }else if((playerChoice == 'scissors') && (computerChoice == 'paper')){
+    }else if((player == 'scissors') && (computer == 'paper')){
         console.log(win);
         userScore++
     }else{
@@ -95,15 +100,16 @@ function playRound(playerChoice, computerChoice){
 
 function game(){
     let i = 1;
+    getComputerChoice().toLowerCase();
+    let numberOfRounds = sessionStorage.getItem("numberOfRound");
 
-    console.log('gra rozpoczeta');
-    console.log(playerSelection);
-    
-
-        // while(i <= numberOfRound){
-        //     playRound();
-        //     i++;
-        // }
+    // console.log('gra rozpoczeta');
+    // console.log(playerSelection);
+    // console.log(computerSelection.toLowerCase());
+    while(i <= numberOfRounds){
+        playRound(playerSelection, computerSelection);
+        i++;
+        }
 
         // if(userScore === computerScore){
         //     console.log(`Game result: TIE !!!`)
