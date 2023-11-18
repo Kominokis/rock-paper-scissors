@@ -4,6 +4,11 @@
 // 4. Sprawdzamy kto wygrał -- zrobione
 // 5. rozegraj jedna runde -- zrobione
 
+let userScore = 0;
+let computerScore = 0;
+let roundCount = 1;
+let maxRound = parseInt(prompt('How many rounds u want to play?'));
+
 function getComputerChoice(){
     let number = Math.floor(Math.random() * (3 - 1 + 1) + 1);
     // console.log(number);
@@ -27,22 +32,49 @@ function getComputerChoice(){
 function playRound(){
     let userChoice = prompt('Your turn (rock, paper, scissors): ').toLowerCase();
     let computerChoice = getComputerChoice().toLowerCase();
-    console.log(userChoice);
-    console.log(computerChoice);
-    let win = `YOU WON !!! ${userChoice} beats ${computerChoice}`;
-    let loose = `YOU LOST !!! ${computerChoice} beats ${userChoice}`;
-
+    // console.log(userChoice);
+    // console.log(computerChoice);
+    let win = `Round: ${roundCount} - YOU WON`;
+    let loose = `Round: ${roundCount} - YOU LOST`;
+    
     if(userChoice == computerChoice){
-        console.log('DRAW!!!');
+        console.log(`Round: ${roundCount} - DRAW, no points`);
     }else if((userChoice == 'rock') && (computerChoice == 'scissors')){
         console.log(win);
+        userScore++;
     }else if((userChoice == 'paper') && (computerChoice == 'rock')){
         console.log(win);
+        userScore++;
     }else if((userChoice == 'scissors') && (computerChoice == 'paper')){
         console.log(win);
+        userScore++
     }else{
         console.log(loose);
+        computerScore++;
+    }
+    roundCount++;
+    return userScore, computerScore
+}
+
+
+function game(){
+    let i = 1;
+    while(i <= maxRound){
+        playRound();
+        i++;
+    }
+
+    if(userScore === computerScore){
+        console.log(`Game result: TIE !!!`)
+    }else if(userScore < computerScore){
+        console.log('Game result: COMPUTER WINS !!!')
+    }else{
+        console.log('Game result: USER WINS !!!')
     }
 }
 
-playRound()
+game();
+console.log('-----Here are your points-----');
+console.log(`Twój wynik: ${userScore}`);
+console.log(`Wynik komputera: ${computerScore}`);
+console.log('------------------------------');
